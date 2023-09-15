@@ -10,8 +10,8 @@ form.addEventListener("submit", (e) => {
     .trim()
     .split("\n")
     .map((el) => el.split("=").map((el) => el.trim()))
-    .reduce((acc, [key, value]) => {
-      acc[key] = value;
+    .reduce((acc, [key, ...value]) => {
+      acc[key] = value.join("=");
       return acc;
     }, {});
   const envAsJson = JSON.stringify(envAsObj, null, 2);
