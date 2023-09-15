@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Env Changer</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: rgb(142, 188, 186, 0.5);
+      }
+      p {
+        margin: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+      }
+      .wrapper {
+        padding: 20px;
+        border-radius: 16px;
+        background-color: rgb(142, 188, 186);
+      }
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* margin-bottom: 30px; */
+      }
+      .env-input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+      }
+      textarea {
+        width: 100%;
+        min-height: 200px;
+        background-color: aliceblue;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 16px;
+        resize: none;
+      }
+      textarea:focus {
+        outline: none;
+      }
+      textarea::placeholder {
+        /* font-size: 16px; */
+        font-size: inherit;
+      }
+      .env-submit {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: rgb(69, 96, 95);
+        border: none;
+        border-radius: 4px;
+        color: bisque;
+        font-size: 20px;
+        transform: scale(1);
+        transition: transform 200ms linear;
+      }
+      .env-submit:active {
+        transform: scale(0.995);
+      }
+      .output-wrapper {
+        margin-top: 30px;
+      }
+      .output-wrapper.close {
+        display: none;
+      }
+      h2 {
+        margin: 0;
+        margin-bottom: 12px;
+        background-color: rgb(142, 188, 186);
+        text-decoration: underline;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .output {
+        height: auto;
+        padding: 4px 8px;
+        background-color: aliceblue;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <form method="post">
+          <label>
+            <textarea
+              name="input-env"
+              placeholder="Введіть ENV змінні для перетворення в JSON"
+            ></textarea>
+          </label>
+          <button class="env-submit">Отримати JSON</button>
+        </form>
+        <div class="output-wrapper">
+          <h2>Output json</h2>
+          <!-- <p class="output">{ "PORT": "3002" }</p> -->
+          <textarea class="output" disabled>{ "PORT": "3002" }</textarea>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
